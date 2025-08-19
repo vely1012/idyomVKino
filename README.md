@@ -10,7 +10,7 @@ The goal of this project is to create an easy-to-use front-end part for an imagi
 
 ## Functionality ⚙️
 
-The goal of this project is creating front-end part for the imaginary movie-theater with such user functions as:
+user functionality must include such features as:
 - browsing the film feed for different dates
 - choosing a seance for the film
 - configuring seats for a ticket to book
