@@ -1,69 +1,41 @@
-# React + TypeScript + Vite
+# idyomVKino
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Description ✏️
 
-Currently, two official plugins are available:
+**Final educational project for the netologia's fronted developer course**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Goal of the project 🎯
 
-## Expanding the ESLint configuration
+The goal of this project is to create an easy-to-use front-end part for an imaginary movie theater's website, providing a functionality for users/customers and administrators
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Functionality ⚙️
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+The goal of this project is creating front-end part for the imaginary movie-theater with such user functions as:
+- browsing the film feed for different dates
+- choosing a seance for the film
+- configuring seats for a ticket to book
+- booking a ticket for a certain seance
+- getting a QR-code of a booked ticket
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+website should also provide administration functionality, allowing for:
+- authorisation
+- starting/stopping ticket sells for each hall 
+- configuring:
+  - films
+  - halls
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## Stack 💻
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+- base: HTML, CSS, JavaScript/TypeScript
+- framework: React
+- additional tools: eslint, jest, babel, vite, react-router, ts-node
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Current state 🕒
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- **finished**:
+  - HTML elements layout and styling
+  - API calls module
+- **in development**:
+  - user functionality
+- **untouched**:
+  - administrating functionality
