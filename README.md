@@ -4,6 +4,8 @@
 
 **Final educational project for the netologia's fronted developer course**
 
+**You can access the project here:** [*no link yet*](.)
+
 ## Goal of the project 🎯
 
 The goal of this project is to create an easy-to-use front-end part for an imaginary movie theater's website, providing a functionality for users/customers and administrators
@@ -28,14 +30,8 @@ website should also provide administration functionality, allowing for:
 
 - base: HTML, CSS, JavaScript/TypeScript
 - framework: React
-- additional tools: eslint, jest, babel, vite, react-router, ts-node
+- additional tools: eslint, babel, vite, react-router, ts-node, redux
 
 ## Current state 🕒
 
-- **finished**:
-  - HTML elements layout and styling
-  - API calls module
-- **in development**:
-  - user functionality
-- **untouched**:
-  - administrating functionality
+layout is done and all functions are implemented

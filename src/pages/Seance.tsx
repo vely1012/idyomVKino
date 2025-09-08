@@ -1,21 +1,20 @@
-import Header from '../components/client/Header'
-import SeanceHall, { type SeanceHallProps } from '../components/client/SeanceHall';
+import Header from '../components/client/Header/Header'
+import SeanceHall/*, { type SeanceHallProps }*/ from '../components/client/SeanceHall/SeanceHall';
 
-import { useParams, Link, useNavigate } from "react-router-dom"
-// import PostComponent from "./components/PostComponent";
-
-// export default function PostPage() {
-    
+// import { useParams } from "react-router-dom"
+// import { useSelector } from 'react-redux';
 
 export default function Seance() {
     // const { seanceId, date } = useParams();
-    const seanceProps: SeanceHallProps = JSON.parse(useParams().seanceProps || "{}")
-    seanceProps.date = new Date(seanceProps.date);
+    // const seanceProps: SeanceHallProps = JSON.parse(useParams().seanceProps || "{}")
+    // seanceProps.date = new Date(seanceProps.date);
+    // const seanceProps = useSelector((state: any) => state)
 
     return (
         <>
         <Header />
-        <SeanceHall { ...seanceProps } />
+        {/* <SeanceHall { ...(seanceProps.props) } /> */}
+        <SeanceHall />
         </>
     )
 }

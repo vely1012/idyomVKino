@@ -1,0 +1,338 @@
+.seances {
+    position: relative;
+}
+
+.seances__draggable-film {
+    position: absolute;
+    top: var(--y);
+    left: var(--x);
+
+    height: 75px;
+    width: fit-content;
+
+    z-index: 1000;
+    opacity: 0.5;
+
+    cursor: grabbing;
+}
+
+.seances__draggable-seance {
+    position: absolute;
+    top: var(--y);
+    left: var(--x);
+
+    padding: 1em;
+
+    /* left: calc(100% / var(--minutes-per-day) * var(--starting-at));
+    top: var(--vertical-padding); */
+    
+    /* width: calc(100% / var(--minutes-per-day) * var(--time-span)); */
+    /* height: var(--sesance-height); */
+    width: 100px;
+    height: 100px;
+
+    font-size: 10px;
+
+    border: 2px solid hsl(var(--hue-rotate) 100% 50%);
+    background-color: hsl(var(--hue-rotate) 60% 80%);
+
+    z-index: 500;
+    opacity: 0.5;
+}
+
+.seances__draggable-film * {
+    cursor: grabbing;
+
+    /* display: none; */
+}
+
+/* .seances__draggable-film img {
+    display: block;
+} */
+
+.seances__film-container {
+    display: flex;
+    flex-wrap: wrap;
+
+    margin-top: 15px;
+    gap: 15px;
+}
+
+.seances__add-film-btn {
+    background-color: #16A6AF;
+    color: white;
+    border-radius: 3px;
+    text-transform: uppercase;
+    padding: 12px;
+
+    border: none;
+    cursor: pointer;
+
+    align-self: center;
+}
+
+.seances__add-film-btn {
+    margin-right: auto;
+}
+
+.seances__film {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    position: relative;
+
+    height: 75px;
+    min-width: 250px;
+
+    padding-right: 25px;
+
+    --hue-rotate: calc(attr(data-color) * 1deg);
+
+    cursor: pointer;
+}
+
+.seances__film * {
+    position: relative;
+    z-index: 2;
+}
+
+.seances__film:before {
+    content: "";
+
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+    top: -2px;
+    left: -2px;
+    z-index: 1;
+
+    border: 2px solid #888;
+    background-color: #8884;
+
+    /* critical for matching .seances__film:before and .seances__seance colors. */
+    --dh: 50deg;
+    filter: sepia(1) hue-rotate(calc(var(--hue-rotate) - var(--dh))) saturate(10);
+}
+
+.seances__poster-thumb {
+    height: 100%;
+    width: fit-content;
+
+    margin-right: 10px;
+
+    float: left;
+
+    object-fit: contain;
+}
+
+.seances__film-duration {
+    color: gray;
+}
+
+.seances__delete-film-btn {
+    width: 0.9em;
+    height: 0.9em;
+
+    border: none;
+    border-radius: 20%;
+
+    background-color: white;
+    background-image: url("data:image/svg+xml,%3Csvg width='73' height='74' viewBox='0 0 73 74' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M60.3616 71.2998H12.3181L6.66593 22.4248H66.0138L60.3616 71.2998Z' fill='%2367526D'/%3E%3Cpath d='M6.66593 8.0498L3.83984 13.7998H68.8398L66.0138 8.0498H51.8833L49.0572 2.2998H23.6225L20.7964 8.0498H6.66593Z' fill='%2367526D'/%3E%3Cpath d='M60.3616 71.2998H12.3181L6.66593 22.4248H66.0138L60.3616 71.2998Z' stroke='%2367526D' stroke-width='4'/%3E%3Cpath d='M6.66593 8.0498L3.83984 13.7998H68.8398L66.0138 8.0498H51.8833L49.0572 2.2998H23.6225L20.7964 8.0498H6.66593Z' stroke='%2367526D' stroke-width='4'/%3E%3C/svg%3E%0A");
+    background-position: center center;
+    background-size: 60%;
+    background-repeat: no-repeat;
+
+    font-size: inherit;
+
+    cursor: pointer;
+}
+
+.seances__delete-film-btn {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+
+    width: 25px;
+    height: 25px;
+}
+
+.seances__schedules {
+    --sesance-height: 40px;
+
+    display: flex;
+    align-items: end;
+    flex-direction: column;
+    gap: 10px;
+
+    margin: 40px 0;
+    /* padding: 20px; */
+}
+
+.seances__schedules > * {
+    /* width: 96%; */
+    /* width: calc(100% - 70px); */
+    width: calc(100% - var(--sesance-height));
+}
+
+@media (max-width: 390px) {
+    .seances__schedules {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+.seances__hall-name {
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+/* .seances__hall-schedule {
+    position: relative;
+
+    --minutes-per-day: 1440;
+    display: grid;
+    grid-template-columns: repeat(var(--minutes-per-day), 1fr);
+
+    --vertical-padding: 15px;
+    padding: var(--vertical-padding) 0px;
+    margin-bottom: 20px;
+    border: 2px solid gray;
+} */
+
+
+.seances__hall-schedule {
+    --minutes-per-day: 1440;
+
+    box-sizing: content-box;
+
+    position: relative;
+
+    --vertical-padding: 10px;
+    height: var(--sesance-height);
+
+    margin-bottom: 20px;
+    padding: var(--vertical-padding) 0px;
+    border: 2px solid gray;
+}
+
+
+/* .seances__hall-schedule:before {
+    position: absolute;
+    transform: translateX(-100%);
+
+    height: var(--sesance-height);
+    aspect-ratio: 1;
+
+    background-image: url("data:image/svg+xml,%3Csvg width='78' height='78' viewBox='0 0 78 78' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M63.5217 73H15.4783L9.82609 24.125H69.1739L63.5217 73Z' fill='%23848484'/%3E%3Cpath d='M9.82609 9.75L7 15.5H72L69.1739 9.75H55.0435L52.2174 4H26.7826L23.9565 9.75H9.82609Z' fill='%23848484'/%3E%3Cpath d='M63.5217 73H15.4783L9.82609 24.125H69.1739L63.5217 73Z' stroke='%23848484' stroke-width='4'/%3E%3Cpath d='M9.82609 9.75L7 15.5H72L69.1739 9.75H55.0435L52.2174 4H26.7826L23.9565 9.75H9.82609Z' stroke='%23848484' stroke-width='4'/%3E%3C/svg%3E%0A");
+    background-position: center center;
+    background-size: 70%;
+    background-repeat: no-repeat;
+} */
+
+.seances__schedule-trashbin {
+    position: absolute;
+    transform: translateX(-100%);
+
+    /* width: 70px; */
+    /* height: 100%; */
+    height: var(--sesance-height);
+    aspect-ratio: 1;
+
+    background-image: url("data:image/svg+xml,%3Csvg width='78' height='78' viewBox='0 0 78 78' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M63.5217 73H15.4783L9.82609 24.125H69.1739L63.5217 73Z' fill='%23848484'/%3E%3Cpath d='M9.82609 9.75L7 15.5H72L69.1739 9.75H55.0435L52.2174 4H26.7826L23.9565 9.75H9.82609Z' fill='%23848484'/%3E%3Cpath d='M63.5217 73H15.4783L9.82609 24.125H69.1739L63.5217 73Z' stroke='%23848484' stroke-width='4'/%3E%3Cpath d='M9.82609 9.75L7 15.5H72L69.1739 9.75H55.0435L52.2174 4H26.7826L23.9565 9.75H9.82609Z' stroke='%23848484' stroke-width='4'/%3E%3C/svg%3E%0A");
+    background-position: center center;
+    background-size: 70%;
+    background-repeat: no-repeat;
+}
+
+
+.seances__hall-schedule:empty {
+    margin-bottom: 0;
+}
+
+
+/* .seances__seance {
+    --time-text: attr(data-time);
+    display: inline-table;
+
+    position: relative;
+
+    padding: 1em;
+
+    border: 2px solid hsl(var(--hue-rotate) 100% 50%);
+    background-color: hsl(var(--hue-rotate) 60% 80%);
+
+    grid-column: var(--starting-at) / span var(--time-span);
+
+    font-size: 10px;
+} */
+
+.seances__seance {
+    --time-text: attr(data-time);
+    position: absolute;
+
+    /* box-sizing: border-box; */
+
+    padding: 1em;
+
+    left: calc(100% / var(--minutes-per-day) * var(--starting-at));
+    top: var(--vertical-padding);
+    /* bottom: 100%; */
+    height: var(--sesance-height);
+    width: calc(100% / var(--minutes-per-day) * var(--time-span));
+
+    font-size: 10px;
+
+    border: 2px solid hsl(var(--hue-rotate) 100% 50%);
+    background-color: hsl(var(--hue-rotate) 60% 80%);
+}
+
+.seances__seance:before,
+.seances__seance:after {
+    content: "";
+
+    position: absolute;
+    left: 0;
+    bottom: calc(0px - var(--vertical-padding));
+
+    color: gray;
+}
+
+.seances__seance:before {
+    content: "I";
+
+    transform: translate(-50%, 100%);
+}
+
+.seances__seance:after {
+    content: var(--time-text);
+
+    transform: translate(-50%, 200%);
+}
+
+.seances__btn-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.seances__deny-btn,
+.seances__save-btn {
+    background-color: #16A6AF;
+    color: white;
+    border-radius: 3px;
+    text-transform: uppercase;
+    padding: 12px;
+
+    border: none;
+    cursor: pointer;
+
+    justify-self: center;
+}
+
+.seances__deny-btn {
+    background-color: white;
+    color: black;
+}

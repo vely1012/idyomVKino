@@ -1,0 +1,93 @@
+.start-selling {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.start-selling__control-text {
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.start-selling__control-text:nth-of-type(2) {
+    margin-top: 40px;
+}
+
+.start-selling__control-text:after {
+    content: ":";
+}
+
+/* .start-selling__hall-selector {
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 90px);
+    grid-auto-rows: auto;
+    gap: 10px;
+}
+
+.start-selling__hall {
+    text-transform: uppercase;
+    text-align: center;
+    color: black;
+
+    background-color: #eeeeee;
+
+    padding: 10px 20px;
+    border-radius: 3px;
+
+    --duration: 0.1s;
+    transition:
+        var(--duration) linear font-weight,
+        var(--duration) linear background-color,
+        var(--duration) linear scale;
+
+    cursor: pointer;
+}
+
+.start-selling__hall_selected {
+    scale: 1.05;
+    z-index: 2;
+
+    background-color: white;
+
+    font-weight: 600;
+} */
+
+.start-selling__hall-status {
+    margin: 30px;
+    align-self: center;
+}
+
+.start-selling__btn {
+    background-color: gray;
+    border-radius: 3px;
+    padding: 12px;
+    
+    /* color: white;
+    text-transform: uppercase; */
+
+    border: none;
+    cursor: pointer;
+
+    align-self: center;
+
+    transition: .3s background-color ease;
+}
+.start-selling__btn:before {
+    content: var(--text);
+
+    color: white;
+    text-transform: uppercase;
+}
+
+.start-selling__btn_start {
+    --text: "открыть продажу билетов";
+
+    background-color: #16A6AF;
+}
+.start-selling__btn_stop {
+    --text: "закрыть продажу билетов";
+    
+    background-color: red;
+}

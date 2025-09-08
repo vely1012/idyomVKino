@@ -1,0 +1,43 @@
+/* .hall-selector {
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 90px);
+    grid-auto-rows: auto;
+    gap: 10px;
+} */
+.hall-selector {
+    width: 100%;
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.hall-selector__item {
+    text-transform: uppercase;
+    text-align: center;
+    color: black;
+
+    background-color: #eeeeee;
+
+    padding: 10px 20px;
+    border-radius: 3px;
+
+    --duration: 0.1s;
+    transition:
+        var(--duration) linear font-weight,
+        var(--duration) linear background-color,
+        var(--duration) linear scale;
+
+    cursor: pointer;
+}
+
+.hall-selector__item_selected {
+    scale: 1.05;
+    z-index: 2;
+
+    background-color: white;
+
+    font-weight: 600;
+}

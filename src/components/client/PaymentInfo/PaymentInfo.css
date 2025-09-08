@@ -1,0 +1,56 @@
+.payment__heading {
+    font-size: 22px;
+    text-transform: uppercase;
+    padding: 25px 15px;
+    color: #C76F00;
+}
+
+.payment__content {
+    padding: 25px 20px 35px;
+    display: flex;
+    flex-direction: column
+}
+
+.payment__info-row:nth-child(n + 2) {
+    margin-top: 10px
+}
+
+.payment__data-name:after {
+    content: ":";
+    display: inline
+}
+
+.payment__data {
+    font-weight: 600
+}
+
+.payment__get-qr-btn {
+    background-color: #16A6AF;
+    color: white;
+    border-radius: 3px;
+    text-transform: uppercase;
+    padding: 12px;
+    border: none;
+    cursor: pointer;
+    align-self: center;
+    margin: 30px 0
+}
+
+.payment__additional {
+    color: gray;
+    margin: 0
+}
+
+.ticket__additional {
+    color: black
+}
+
+.payment__additional:nth-of-type(2) {
+    margin-top: 10px
+}
+
+.ticket__qr {
+    width: min(250px, 75%);
+    margin: 30px 0;
+    align-self: center
+}

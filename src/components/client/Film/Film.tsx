@@ -1,10 +1,17 @@
 import { Link } from 'react-router-dom'
 import { type JSX } from "react"
+import { useDispatch } from 'react-redux';
+import type { Dispatch } from 'redux';
+
+import './Film.css';
+import { setSeanceHall, setTickets, type ClientAction } from '../../../ts/stateManagement/actions';
 
 export interface Seance {
     id: number,
     hallId: number,
     hallName: string,
+    hallPriceStandart: number,
+    hallPriceVIP: number,
     filmId: number,
     time: string
 }
@@ -21,19 +28,34 @@ export interface FilmProps {
 
 function SortSeances(filmName:string, seances: Seance[]): JSX.Element {
     const hallSeances = seances.reduce((acc: Seance[][], s) => {
-        // Find the group for the current object's id
-        const group: any = acc.find((e: Seance[]) => e[0].hallName === s.hallName);
+        const group: Seance[] | undefined = acc.find((e: Seance[]) => e[0].hallName === s.hallName);
 
-        // If the group exists, push the object into it
         if (group) {
             group.push(s);
         } else {
-            // If not, create a new group
             acc.push([s]);
         }
 
         return acc;
     }, []);
+
+    const dispatch = useDispatch<Dispatch<ClientAction>>();
+
+    const onLinkClick = (s: Seance) => {
+        dispatch(setTickets([]))
+        dispatch(
+            setSeanceHall(
+                {
+                    filmName: filmName,
+                    hallName: s.hallName,
+                    startingTime: s.time,
+                    hallPriceStandart: s.hallPriceStandart,
+                    hallPriceVIP: s.hallPriceVIP,
+                    seanceId: s.id,
+                }
+            )
+        )
+    }
 
     return (
         <>
@@ -43,16 +65,12 @@ function SortSeances(filmName:string, seances: Seance[]): JSX.Element {
                         <h2 className="film__booking-hall">{hallData[0].hallName}</h2>
                         <div className="film__seanses">
                             {...hallData.map((s: Seance) =>
-                                // <Link to={`/seance/${s.id}/${new Date()}`} className="shadow film__time">{s.time}</Link>
-                                <Link to={`/seance/${
-                                    JSON.stringify({
-                                        filmName: filmName,
-                                        hallName: s.hallName,
-                                        startingTime: s.time,
-                                        seanceId: s.id,
-                                        date: new Date()
-                                    })
-                                }`} className="shadow film__time">{s.time}</Link>
+                                <Link
+                                    to='/seance'
+                                    onClick={() => { onLinkClick(s) }}
+                                    className="shadow film__time">
+                                    {s.time}
+                                </Link>
                             )}
                         </div>
                     </div>

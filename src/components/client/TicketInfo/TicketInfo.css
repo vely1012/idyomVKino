@@ -1,0 +1,62 @@
+.ticket-border {
+    /* --img100: url("image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M88.0107 0C88.2667 6.50587 93.4941 11.7323 100 11.9883V87.0107C93.3283 87.2732 88 92.7639 88 99.5C88 99.6675 88.0042 99.8341 88.0107 100H62.9893C62.9958 99.8341 63 99.6675 63 99.5C63 92.5964 57.4036 87 50.5 87C43.5964 87 38 92.5964 38 99.5C38 99.6675 38.0042 99.8341 38.0107 100H12.9893C12.9958 99.8341 13 99.6675 13 99.5C13 92.5964 7.40356 87 0.5 87C0.332532 87 0.165869 87.0042 0 87.0107V11.9883C0.165881 11.9948 0.332519 12 0.5 12C7.23609 12 12.7268 6.67175 12.9893 0H38.0107C38.2732 6.67175 43.7639 12 50.5 12C57.2361 12 62.7268 6.67175 62.9893 0H88.0107Z' fill='white' fill-opacity='0.9'/%3E%3C/svg%3E%0A"); */
+    --img100: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M88.0107 0C88.2667 6.50587 93.4941 11.7323 100 11.9883V87.0107C93.3282 87.2732 88 92.7639 88 99.5C88 99.6675 88.0042 99.8341 88.0107 100H62.9893C62.9958 99.8341 63 99.6675 63 99.5C63 92.5964 57.4036 87 50.5 87C43.5964 87 38 92.5964 38 99.5C38 99.6675 38.0042 99.8341 38.0107 100H12.9893C12.9958 99.8341 13 99.6675 13 99.5C13 92.5964 7.40356 87 0.5 87C0.332532 87 0.165869 87.0042 0 87.0107V11.9883C0.165881 11.9948 0.332519 12 0.5 12C7.23609 12 12.7268 6.67175 12.9893 0H38.0107C38.2732 6.67175 43.7639 12 50.5 12C57.2361 12 62.7268 6.67175 62.9893 0H88.0107Z' fill='white' fill-opacity='0.9'/%3E%3C/svg%3E%0A");
+    border-image: var(--img100) 25 fill / 5px round;
+}
+
+.ticket__heading {
+    font-size: 22px;
+    text-transform: uppercase;
+    padding: 25px 15px;
+    color: #C76F00;
+}
+
+.ticket__content {
+    padding: 25px 20px 35px;
+    display: flex;
+    flex-direction: column
+}
+
+.ticket__info-row:nth-child(n + 2) {
+    margin-top: 10px
+}
+
+.ticket__data-name:after {
+    content: ":";
+    display: inline
+}
+
+.ticket__data {
+    font-weight: 600
+}
+
+.ticket__get-qr-btn {
+    background-color: #16A6AF;
+    color: white;
+    border-radius: 3px;
+    text-transform: uppercase;
+    padding: 12px;
+    border: none;
+    cursor: pointer;
+    align-self: center;
+    margin: 30px 0
+}
+
+.ticket__additional {
+    color: gray;
+    margin: 0
+}
+
+.ticket__additional {
+    color: black
+}
+
+.ticket__additional:nth-of-type(2) {
+    margin-top: 10px
+}
+
+.ticket__qr {
+    width: min(250px, 75%);
+    margin: 30px 0;
+    align-self: center
+}
