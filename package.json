@@ -1,5 +1,6 @@
 {
   "name": "idyomvkino",
+  "homepage": "https://vely1012.github.io/idyomVKino/",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -8,10 +9,13 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "tsfile": "node --loader ts-node/esm"
+    "tsfile": "node --loader ts-node/esm",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.8.2",
+    "gh-pages": "^6.3.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-qr-code": "^2.0.18",

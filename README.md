@@ -4,7 +4,7 @@
 
 **Final educational project for the netologia's fronted developer course**
 
-**You can access the project here:** [*no link yet*](.)
+**You can access the project here:** [idyomVKino](https://vely1012.github.io/idyomVKino/)
 
 ## Goal of the project 🎯
 

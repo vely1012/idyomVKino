@@ -12,12 +12,12 @@ import './App.css'
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<Index />}></Route>
-      <Route path="/seance" element={<Seance />}></Route>
-      <Route path="/payment" element={<Payment />}></Route>
-      <Route path="/ticket" element={<Ticket />}></Route>
-      <Route path="/login" element={<Login />}></Route>
-      <Route path="/admin" element={<Admin />}></Route>
+      <Route path="/idyomVKino/" element={<Index />}></Route>
+      <Route path="/idyomVKino/seance" element={<Seance />}></Route>
+      <Route path="/idyomVKino/payment" element={<Payment />}></Route>
+      <Route path="/idyomVKino/ticket" element={<Ticket />}></Route>
+      <Route path="/idyomVKino/login" element={<Login />}></Route>
+      <Route path="/idyomVKino/admin" element={<Admin />}></Route>
     </Routes>
   )
 }
