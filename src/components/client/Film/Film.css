@@ -1,0 +1,67 @@
+.film {
+    width: 100%;
+    padding: 30px;
+    background-color: #ffffffe6
+}
+
+.film__info {
+    position: relative;
+
+    display: flex;
+    align-items: flex-start
+}
+
+.film__title {
+    position: relative;
+}
+.film__title:before {
+    content: "";
+
+    position: absolute;
+    top: 0;
+    left: -17px;
+    
+    width: 6px;
+    height: 14px;
+
+    background-image: url("data:image/svg+xml,%3Csvg width='6' height='14' viewBox='0 0 6 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0L6 3V14H0V0Z' fill='%23772720'/%3E%3C/svg%3E%0A");
+    background-size: cover;
+}
+
+.film__poster {
+    width: 210px;
+    max-width: 35%;
+    aspect-ratio: 0.75;
+    margin-right: 20px;
+    object-fit: cover;
+    float: left
+}
+
+.film__additional-info {
+    color: gray
+}
+
+.film__booking {
+    margin: 20px 0
+}
+
+.film__seanses {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 50px);
+    gap: 5px;
+    margin: 10px 0 0
+}
+
+.film__time {
+    text-align: center;
+    background-color: #ffffffe6;
+    color: black;
+    padding: 5px;
+    border-radius: 3px;
+
+    --duration: 0.1s;
+    transition:
+        var(--duration) linear font-weight,
+        var(--duration) linear background-color,
+        var(--duration) linear scale;
+}
