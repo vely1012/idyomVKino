@@ -66,7 +66,7 @@ function SortSeances(filmName:string, seances: Seance[]): JSX.Element {
                         <div className="film__seanses">
                             {...hallData.map((s: Seance) =>
                                 <Link
-                                    to='/seance'
+                                    to='/idyomVKino/seance'
                                     onClick={() => { onLinkClick(s) }}
                                     className="shadow film__time">
                                     {s.time}

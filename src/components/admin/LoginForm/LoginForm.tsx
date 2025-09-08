@@ -19,7 +19,7 @@ export default function LoginForm () {
 
         dispatch(LogIn(email.value, password.value))
 
-        navigate('/admin')
+        navigate('/idyomVKino/admin')
     }
     
     return (

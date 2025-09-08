@@ -36,7 +36,7 @@ export default function Admin() {
                 setAdminAuthorised(true)
             } else {
                 alert(response.error)
-                setResultingComponent(<Navigate to="/login" />)
+                setResultingComponent(<Navigate to="./login" />)
             }
         }
 

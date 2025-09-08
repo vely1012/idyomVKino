@@ -149,7 +149,7 @@ export default function SeanceHall() {
                     )
                 )
 
-                navigate('/payment');
+                navigate('/idyomVKino/payment');
             }}>
                 <div className="hall__seats-manager">
                     <span className="hall__screen">экран</span>

@@ -48,7 +48,7 @@ export default function PaymentInfo() {
             //     )
             // )
             // dispatch(setTickets([]))
-            navigate('../ticket')
+            navigate('/idyomVKino/ticket')
         } else {
             console.error(responce.error)
         }
