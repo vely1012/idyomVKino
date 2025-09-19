@@ -1,13 +1,15 @@
-import { useContext, type FormEvent } from "react"
-// import { adminContext } from "../../../../pages/Admin"
-import { adminContext } from "../../../../ts/stateManagement/adminContext"
+import { type FormEvent } from "react"
 import type { FilmNode, HallNode, SeanceNode } from "../../../../ts/API/IvkAPI"
 import TimeInput from "./TimeInput"
 import ivkAPI from "../../../../ts/API/IvkAPI"
-import { SetSeances } from "../../../../ts/stateManagement/actions"
+import { SetSeances, type AdminAction } from "../../../../ts/stateManagement/actions"
+import { useDispatch, useSelector } from "react-redux"
+import type { appState } from "../../../../ts/stateManagement/reducers"
+import type { Dispatch } from "redux"
 
 export default function AddSeancePopup() {
-    const { adminData, dispatch } = useContext(adminContext)
+    const adminData = useSelector((state: appState) => state.admin)
+    const dispatch = useDispatch<Dispatch<AdminAction>>()
 
     const hallOptions: HallNode[] = adminData.halls
     const filmOptions: FilmNode[] = adminData.films

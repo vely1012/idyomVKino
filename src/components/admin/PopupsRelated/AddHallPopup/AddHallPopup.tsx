@@ -1,11 +1,14 @@
-import { type FormEvent, useContext } from "react"
-// import { adminContext } from "../../../../pages/Admin"
-import { adminContext } from "../../../../ts/stateManagement/adminContext"
+import { type FormEvent } from "react"
 import ivkAPI, { type HallNode } from "../../../../ts/API/IvkAPI"
 import { SetHalls } from "../../../../ts/stateManagement/actions"
 
+import { useDispatch } from "react-redux"
+import { type Dispatch } from "redux"
+import { type AdminAction } from "../../../../ts/stateManagement/actions"
+
+
 export default function AddHallPopup() {
-    const { dispatch } = useContext(adminContext)
+    const dispatch = useDispatch<Dispatch<AdminAction>>()
 
     const submitAdding = async function(e: FormEvent) {
         e.preventDefault()

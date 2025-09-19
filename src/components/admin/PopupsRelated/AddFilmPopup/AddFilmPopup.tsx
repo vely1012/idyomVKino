@@ -1,17 +1,13 @@
-import { useContext, type FormEvent } from "react"
-// import { useSelector } from "react-redux"
-// import { setNamedProp } from "../../../../ts/stateManagement/actions"
+import { type FormEvent } from "react"
 import ivkAPI, { type FilmNode} from "../../../../ts/API/IvkAPI"
-// import { adminContext } from "../../../../pages/Admin"
-// import { adminContext } from "../../../../pages/Admin"
-import { adminContext } from "../../../../ts/stateManagement/adminContext"
-// import { type appState } from "../../../../ts/stateManagement/reducers"
 import { SetFilms } from "../../../../ts/stateManagement/actions"
-// import { useDispatch } from "react-redux"
+
+import { useDispatch } from "react-redux"
+import { type Dispatch } from "redux"
+import { type AdminAction } from "../../../../ts/stateManagement/actions"
 
 export default function AddFilmPopup() {
-    // const { active } = useSelector((state: appState) => state.plain.props.addFilmPopup) || { active: false }
-    const { dispatch } = useContext(adminContext)
+    const dispatch = useDispatch<Dispatch<AdminAction>>()
 
     const submitAdding = async function (e: FormEvent) {
         e.preventDefault()
@@ -26,14 +22,6 @@ export default function AddFilmPopup() {
         const response = await ivkAPI.addFilm(filmName, filmDuration, filmDescription, filmOrigin, filmPoster)
         
         if(response.success) {
-            // dispatch(
-            //     setNamedProp(
-            //         'adminData',
-            //         {
-            //             ...adminData
-            //         }
-            //     )
-            // )
             dispatch(SetFilms((response.result as { films: FilmNode[] }).films))
             closePopup()
         } else {
@@ -43,14 +31,6 @@ export default function AddFilmPopup() {
     }
 
     const closePopup = function () {
-        // dispatch(
-        //     setNamedProp(
-        //         'addFilmPopup',
-        //         {
-        //             active: false,
-        //         }
-        //     )
-        // )
         document.getElementById('addFilmPopup')?.classList.add('hidden')
     }
 

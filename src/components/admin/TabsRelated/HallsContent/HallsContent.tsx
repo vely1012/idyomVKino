@@ -1,14 +1,16 @@
-import { useContext } from 'react'
 import HallElement from './HallElement'
 import { type HallNode } from '../../../../ts/API/IvkAPI'
-import { adminContext } from '../../../../ts/stateManagement/adminContext'
-import { SetHalls } from '../../../../ts/stateManagement/actions'
+import { type AdminAction, SetHalls } from '../../../../ts/stateManagement/actions'
+
+import { useDispatch, useSelector } from 'react-redux'
+import type { appState } from '../../../../ts/stateManagement/reducers'
+import { type Dispatch } from 'redux'
 
 import './HallsContent.css'
 
 export default function HallsContent() {
-
-    const { adminData, dispatch } = useContext(adminContext)
+    const adminData = useSelector((state: appState) => state.admin)
+    const dispatch = useDispatch<Dispatch<AdminAction>>()
     const halls = adminData.halls
         
     const deletionCallback = function(deletedHallId: number) {

@@ -1,15 +1,19 @@
 import HallSelector from '../../HallSelector/HallSelector'
-import { useState, useContext, type FormEvent, type ChangeEvent, useEffect } from 'react'
+import { useState, type FormEvent, type ChangeEvent, useEffect } from 'react'
 import HallConfigSeat from './HallConfigSeat'
 
-import { adminContext } from '../../../../ts/stateManagement/adminContext'
 import ivkAPI, { type HallNode } from '../../../../ts/API/IvkAPI'
-import { SetHalls } from '../../../../ts/stateManagement/actions'
+import { SetHalls, type AdminAction } from '../../../../ts/stateManagement/actions'
+
+import { useDispatch, useSelector } from 'react-redux'
+import type { appState } from '../../../../ts/stateManagement/reducers'
+import type { Dispatch } from 'redux'
 
 import './HallConfigContent.css'
 
 export default function HallConfigContent() {
-    const { adminData, dispatch } = useContext(adminContext)
+    const adminData = useSelector((state: appState) => state.admin)
+    const dispatch = useDispatch<Dispatch<AdminAction>>()
 
     const [selectedHallIndex, setSelectedHallIndex] = useState(0)
     const [halls, setHalls] = useState<HallNode[]>(adminData.halls)
@@ -51,6 +55,9 @@ export default function HallConfigContent() {
 
     const changeHallHeight = function(e: ChangeEvent) {
         const input = e.target as HTMLInputElement
+        if(input.value === "") {
+            return
+        }
 
         const newHeight = Number(input.value)
         const newHallConfig: string[][] = JSON.parse(JSON.stringify(halls[selectedHallIndex].hall_config))
@@ -67,7 +74,7 @@ export default function HallConfigContent() {
 
         setHalls(halls.map((h: HallNode, i: number) => {
             if(i === selectedHallIndex) {
-                const reconfiguredHall: HallNode = { ...h, hall_config: newHallConfig}
+                const reconfiguredHall: HallNode = { ...h, hall_config: newHallConfig }
                 return reconfiguredHall
             } else {
                 return h
@@ -78,6 +85,9 @@ export default function HallConfigContent() {
 
     const changeHallWidth = function(e: ChangeEvent) {
         const input = e.target as HTMLInputElement
+        if(input.value === "") {
+            return
+        }
 
         const newWidth = Number(input.value)
         const newHallConfig: string[][] = JSON.parse(JSON.stringify(halls[selectedHallIndex].hall_config))
@@ -155,12 +165,12 @@ export default function HallConfigContent() {
             <span className="hall-config__control-text">Укажите количество рядов и максимальное количество
                 кресел в ряду</span>
             <div className="hall-config__size-panel">
-                <label htmlFor="" className="hall-config__size-control-hint">Рядов, шт.</label>
-                <input className="hall-config__size-control" type="number" name="" id="" min="1" max="30"
+                <label htmlFor="hallRowsInput" className="hall-config__size-control-hint">Рядов, шт.</label>
+                <input className="hall-config__size-control" type="number" id="hallRowsInput" min="1" max="30"
                     step="1" placeholder="10" value={selectedHallHeight} onChange={changeHallHeight}/>
                 <span className="hall-config__devider">x</span>
-                <label htmlFor="" className="hall-config__size-control-hint">Мест, шт.</label>
-                <input className="hall-config__size-control" type="number" name="" id="" min="1" max="30"
+                <label htmlFor="hallSeatsInput" className="hall-config__size-control-hint">Мест, шт.</label>
+                <input className="hall-config__size-control" type="number" id="hallSeatsInput" min="1" max="30"
                     step="1" placeholder="10" value={selectedHallWidth} onChange={changeHallWidth}/>
             </div>
             <span className="hall-config__control-text">Теперь вы можете указать типы кресел на схеме</span>

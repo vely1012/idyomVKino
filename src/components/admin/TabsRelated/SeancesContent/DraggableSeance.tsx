@@ -1,10 +1,11 @@
-import { useContext, type MouseEvent } from "react"
-import { adminContext } from "../../../../ts/stateManagement/adminContext"
+import { type MouseEvent } from "react"
 import ivkAPI, { type SeanceNode } from "../../../../ts/API/IvkAPI"
-import { SetSeances } from "../../../../ts/stateManagement/actions"
+import { type AdminAction, SetSeances } from "../../../../ts/stateManagement/actions"
+import { useDispatch } from "react-redux"
+import { type Dispatch } from "redux"
 
 export default function DraggableSeance() {
-    const { dispatch } = useContext(adminContext)
+    const dispatch = useDispatch<Dispatch<AdminAction>>()
 
     const dragging = function(e: MouseEvent) {
         const draggableSeance = e.target as HTMLElement

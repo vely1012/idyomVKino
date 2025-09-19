@@ -1,15 +1,19 @@
-import { useContext, useEffect, useState, type ChangeEvent } from 'react';
-import { adminContext } from '../../../../ts/stateManagement/adminContext';
+import { useEffect, useState, type ChangeEvent, } from 'react';
 
 import HallSelector from '../../HallSelector/HallSelector';
 
 import ivkAPI, { type HallNode } from '../../../../ts/API/IvkAPI';
-import { SetHalls } from '../../../../ts/stateManagement/actions';
+import { SetHalls, type AdminAction } from '../../../../ts/stateManagement/actions';
+
+import { useDispatch, useSelector } from 'react-redux';
+import { type Dispatch } from 'redux'
+import type { appState } from '../../../../ts/stateManagement/reducers';
 
 import './PricesContent.css'
 
 export default function PricesContent() {
-    const { adminData, dispatch, } = useContext(adminContext)
+    const adminData = useSelector((state: appState) => state.admin)
+    const dispatch = useDispatch<Dispatch<AdminAction>>()
 
     const [selectedHallIndex, setSelectedHallIndex] = useState(0)
     const [halls, setHalls] = useState<HallNode[]>(adminData.halls)

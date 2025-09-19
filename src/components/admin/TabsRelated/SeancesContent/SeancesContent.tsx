@@ -1,6 +1,4 @@
 import type { FilmNode, HallNode, SeanceNode } from '../../../../ts/API/IvkAPI'
-import { useContext } from 'react'
-import { adminContext } from '../../../../ts/stateManagement/adminContext'
 import DraggableFilm from './DraggableFilm'
 import ivkAPI from '../../../../ts/API/IvkAPI'
 
@@ -8,12 +6,17 @@ import HallSchedule, { type SeanceEssentials } from './HallSchedule'
 import SeanceFilm from './SeanceFilm'
 
 import DraggableSeance from './DraggableSeance'
+import { SetFilms, SetSeances, type AdminAction } from '../../../../ts/stateManagement/actions'
+
+import { useDispatch, useSelector } from 'react-redux'
+import type { appState } from '../../../../ts/stateManagement/reducers'
+import type { Dispatch } from 'redux'
 
 import './SeancesContent.css'
-import { SetFilms, SetSeances } from '../../../../ts/stateManagement/actions'
 
 export default function SeancesContent() {
-    const { adminData, dispatch } = useContext(adminContext)
+    const adminData = useSelector((state: appState) => state.admin)
+    const dispatch = useDispatch<Dispatch<AdminAction>>()
 
     const deleteFilmCallback = async function(filmId: number) {
         const response = await ivkAPI.deleteFilm(filmId)
