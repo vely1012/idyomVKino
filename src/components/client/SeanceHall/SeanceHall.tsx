@@ -6,13 +6,12 @@ import type { Dispatch } from 'redux';
 import HallSeats from './HallSeats';
 
 
-import ivkAPI, { /*type HallNode,*/ type Ticket } from '../../../ts/API/IvkAPI';
+import ivkAPI, { type Ticket } from '../../../ts/API/IvkAPI';
 
-// import { type SetNamedPropAction, setNamedProp } from '../../../ts/stateManagement/actions';
+import type { appState } from '../../../ts/stateManagement/reducers';
+import { setPaymentInfo, setTickets, type ClientAction } from '../../../ts/stateManagement/actions';
 
 import './SeanceHall.css';
-import type { appState } from '../../../ts/stateManagement/reducers';
-import { setPaymentInfo, /*setSeanceHall,*/ setTickets, type ClientAction, /*type SetPaymentInfoAction*/ } from '../../../ts/stateManagement/actions';
 
 export interface SeanceHallProps {
     filmName: string,
@@ -21,46 +20,34 @@ export interface SeanceHallProps {
     hallPriceStandart: number,
     hallPriceVIP: number,
     seanceId: number,
-    // chosenSeats: Ticket[],
 }
 
 export default function SeanceHall() {
-    // const seanceHallProp = useSelector((state: any) =>  state.props.seanceHall)
-    const seanceHallProps = useSelector((state: appState) => state.client.seanceHallProps)
-    // const { filmName, hallName, hallPriceStandart, hallPriceVIP, startingTime, seanceId } = seanceHallProp
+    const seanceHallProps = useSelector((state: appState) => state.client.seanceHallProps);
     if (!seanceHallProps) {
-        throw new Error('No seanceHallProps found')
+        throw new Error('No seanceHallProps found');
     }
-    const { filmName, hallName, hallPriceStandart, hallPriceVIP, startingTime, seanceId } = seanceHallProps
-    const chosenTickets: Ticket[] = useSelector((state: appState) => state.client.tickets) || []
-    // const date = new Date(useSelector((state: appState) => state.plain.props.currentDate.selectedDateString))
-    const date = new Date(useSelector((state: appState) => state.client.selectedDateString))
+    const { filmName, hallName, hallPriceStandart, hallPriceVIP, startingTime, seanceId } = seanceHallProps;
+    const chosenTickets: Ticket[] = useSelector((state: appState) => state.client.tickets) || [];
+    const date = new Date(useSelector((state: appState) => state.client.selectedDateString));
 
     const [hallSeats, setHallSeats] = useState<JSX.Element>(<></>);
 
     const navigate = useNavigate();
-    // const dispatch = useDispatch<Dispatch<SetNamedPropAction>>();
     const dispatch = useDispatch<Dispatch<ClientAction>>();
 
     useEffect(() => {
         const fetchHallLayout = async () => {
-            // let relevantData: any;
             let currentSeatsConfig: string[][];
 
             const responce = await ivkAPI.currentSeanceSeatsConfig(seanceId, date);
             if (responce.success) {
-                // relevantData = responce.result;
-                // currentSeatsConfig = (responce.result as HallNode).hall_config
-                currentSeatsConfig = responce.result as string[][]
+                currentSeatsConfig = responce.result as string[][];
             } else {
-                // relevantData = [];
-                currentSeatsConfig = []
+                currentSeatsConfig = [];
                 console.error(responce.error);
             }
 
-            // const seatElements = HallSeats(relevantData, seanceHallProp.chosenSeats);
-            // const seatElements = <HallSeats seatsData={relevantData} chosenSeats={seanceHallProps.chosenSeats} />;
-            // const seatElements = <HallSeats seatsData={currentSeatsConfig} chosenTickets={seanceHallProps.chosenSeats} />;
             const seatElements = <HallSeats seatsData={currentSeatsConfig} chosenTickets={chosenTickets} />;
 
             setHallSeats(seatElements);
@@ -86,10 +73,10 @@ export default function SeanceHall() {
             <form className="hall__booking" onSubmit={function (e: FormEvent) {
                 e.preventDefault();
 
-                const allSeats = Array.from((e.target as HTMLFormElement).querySelectorAll('.hall__seat'))
-                const currentChosenTickets: Ticket[] = []
-                const hallSeatsEl = (e.target as HTMLFormElement).querySelector('.hall__seats') as HTMLElement
-                const seatsCount = Number(hallSeatsEl.style.getPropertyValue('--seats'))
+                const allSeats = Array.from((e.target as HTMLFormElement).querySelectorAll('.hall__seat'));
+                const currentChosenTickets: Ticket[] = [];
+                const hallSeatsEl = (e.target as HTMLFormElement).querySelector('.hall__seats') as HTMLElement;
+                const seatsCount = Number(hallSeatsEl.style.getPropertyValue('--seats'));
 
 
                 allSeats.forEach((e: Element, i: number) => {
@@ -101,42 +88,19 @@ export default function SeanceHall() {
                             row: Math.floor(i / seatsCount) + 1,
                             place: i % seatsCount + 1,
                             coast: isVipSeat ? hallPriceVIP : hallPriceStandart,
-                        })
+                        });
                     }
-                })
+                });
 
-                const totalCost = currentChosenTickets.reduce((cost: number, ticket: Ticket) => cost + ticket.coast, 0)
+                const totalCost = currentChosenTickets.reduce((cost: number, ticket: Ticket) => cost + ticket.coast, 0);
 
                 if (currentChosenTickets.length === 0) {
-                    alert('Выберете хотя бы одно место')
-                    return
+                    alert('Выберете хотя бы одно место');
+                    return;
                 }
 
-                // dispatch(
-                //     setNamedProp(
-                //         'seanceHall',
-                //         {
-                //             ...seanceHallProps,
-                //             chosenSeats
-                //         }
-                //     )
-                // )
-                // const newSeanceHallProps = {...seanceHallProps, seats: chosenSeats }
-                dispatch(setTickets(currentChosenTickets))
+                dispatch(setTickets(currentChosenTickets));
 
-                // dispatch(
-                //     setNamedProp(
-                //         'paymentInfo', 
-                //         {
-                //             filmName: filmName,
-                //             seats: chosenSeats,
-                //             hallName: hallName,
-                //             seanceTime: startingTime,
-                //             seanceId: seanceId,
-                //             totalCost: totalCost
-                //         }
-                //     )
-                // )
                 dispatch(
                     setPaymentInfo(
                         {
@@ -147,7 +111,7 @@ export default function SeanceHall() {
                             totalCost: totalCost
                         }
                     )
-                )
+                );
 
                 navigate('/idyomVKino/payment');
             }}>
@@ -156,8 +120,8 @@ export default function SeanceHall() {
                     {hallSeats}
                     <div className="hall__legend">
                         <div className="hall__legend-item">
-                            <div className="hall__icon-seat hall__icon-seat_available"></div>
-                            <span className="hall__legend-item-text currency">Свободно ({hallPriceStandart})</span>
+                            <div className="hall__icon-seat hall__icon-seat_standart"></div>
+                            <span className="hall__legend-item-text">Свободно ({hallPriceStandart}руб)</span>
                         </div>
                         <div className="hall__legend-item">
                             <div className="hall__icon-seat hall__icon-seat_occupied"></div>
@@ -165,7 +129,7 @@ export default function SeanceHall() {
                         </div>
                         <div className="hall__legend-item">
                             <div className="hall__icon-seat hall__icon-seat_vip"></div>
-                            <span className="hall__legend-item-text currency">Свободно ({hallPriceVIP})</span>
+                            <span className="hall__legend-item-text">Свободно VIP ({hallPriceVIP}руб)</span>
                         </div>
                         <div className="hall__legend-item">
                             <div className="hall__icon-seat hall__icon-seat_chosen"></div>

@@ -1,6 +1,6 @@
 .film {
     width: 100%;
-    padding: 30px;
+    padding: 15px;
     background-color: #ffffffe6
 }
 
@@ -13,13 +13,14 @@
 
 .film__title {
     position: relative;
+    font-size: 16px;
 }
 .film__title:before {
     content: "";
 
     position: absolute;
     top: 0;
-    left: -17px;
+    left: -14px;
     
     width: 6px;
     height: 14px;
@@ -29,34 +30,49 @@
 }
 
 .film__poster {
-    width: 210px;
+    width: 125px;
     max-width: 35%;
-    aspect-ratio: 0.75;
-    margin-right: 20px;
+    aspect-ratio: calc(5 / 7);
+    margin-right: 16px;
     object-fit: cover;
     float: left
 }
 
+.film__description {
+    margin: 8px 0 8px;
+    font-size: 14px
+}
+
 .film__additional-info {
-    color: gray
+    font-weight: 300;
+    font-size: 14px
 }
 
 .film__booking {
-    margin: 20px 0
+    margin: 21px 0 0
+}
+.film__booking:first-child {
+    margin: 0
+}
+
+.film__booking-hall {
+    font-size: 16px
 }
 
 .film__seanses {
     display: grid;
-    grid-template-columns: repeat(auto-fill, 50px);
+    grid-template-columns: repeat(auto-fill, 53px);
     gap: 5px;
-    margin: 10px 0 0
+    margin: 6.5px 0 0
 }
 
 .film__time {
+    padding: 7.8px;
+
+    font-size: 15px;
     text-align: center;
-    background-color: #ffffffe6;
     color: black;
-    padding: 5px;
+    background-color: #ffffffe6;
     border-radius: 3px;
 
     --duration: 0.1s;

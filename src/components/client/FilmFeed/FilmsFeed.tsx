@@ -12,7 +12,7 @@ function formFilmPropsList(relevantData: RelevantData): FilmProps[] {
         const filmSeances: Seance[] = relevantData.seances.reduce((filmSeances: Seance[], seance: SeanceNode) => {
             if(f.id === seance.seance_filmid) {
                 // const seanceHall = relevantData.halls.find((h: any) => h.id === seance.seance_hallid);
-                const seanceHall = relevantData.halls.find((h: HallNode) => h.id === seance.seance_hallid);
+                const seanceHall = relevantData.halls.find((h: HallNode) => h.hall_open && h.id === seance.seance_hallid);
                 if(!seanceHall) {
                     return filmSeances
                 }

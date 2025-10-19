@@ -18,7 +18,8 @@ export interface ClientState {
 }
 
 const initialClientState: ClientState = {
-    selectedDateString: (new Date()).toDateString()
+    // selectedDateString: (new Date()).toDateString()
+    selectedDateString: 'Thu Jan 01 1970'
 };
 
 export const clientReducer = (state:ClientState = initialClientState, action: ClientAction): ClientState => {

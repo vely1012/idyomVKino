@@ -209,9 +209,13 @@
     border: none;
     outline: none;
 
+    clip-path: rect(0px calc(100% - 20px) 100% 0px);
+    cursor: pointer;
+    margin-right: -1.5em;
+  
     padding: 0.5em;
 
-    width: 1.6em;
+    width: 3.1em;
 
     -moz-appearance: textfield;
     /* Firefox */

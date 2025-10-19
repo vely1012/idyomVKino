@@ -73,10 +73,10 @@
     padding: 0.5em;
     
     border-radius: 0;
-    border: 2px solid gray;
+    border: 1px solid #B7B7B7;
 }
 .prices__price-input:placeholder {
-    color: gray;
+    color: #B7B7B7;
 }
 .prices__price-input:focus-visible {
     outline: none;
@@ -104,7 +104,7 @@
     position: relative;
 }
 .prices__seat_normal {
-    border: 2px solid black;
+    border: 1px solid black;
     background-color: #bbb;
 }
 .prices__seat_vip {
@@ -136,7 +136,7 @@
         calc(var(--size) * 1),
         calc(var(--size) * 0);
 
-    border: 2px solid var(--tile-col);
+    border: 1px solid var(--tile-col);
 }
 
 .prices__legend-hint {
@@ -157,7 +157,7 @@
     color: white;
     border-radius: 3px;
     text-transform: uppercase;
-    padding: 12px;
+    padding: 12px 30px;
 
     border: none;
     cursor: pointer;

@@ -5,7 +5,7 @@
 .hall__info {
     display: flex;
     justify-content: space-between;
-    padding: 20px
+    padding: 16px
 }
 
 .hall__mobile-hint {
@@ -30,7 +30,7 @@
 
 .hall__seanse-starts-at {
     display: block;
-    margin-top: 20px
+    margin-top: 10px
 }
 
 .hall__name {
@@ -40,12 +40,12 @@
 /* ----- hall__seat-manager ----- */
 
 .hall__seats-manager {
-    background-color: #072d30;
+    background-color: #171D24;
     padding: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    --seat-size: 30px
+    --seat-size: 20px
 }
 
 .hall__seats-manager * {
@@ -55,13 +55,15 @@
 .hall__screen {
     position: relative;
 
-    padding: 0.4em 0 1.2em;
+    padding: 0.4em 0 1em;
 
     background-size: 100% 100%;
-    background-image: url('data:image/svg+xml,%3Csvg preserveAspectRatio="none" width="152" height="16" viewBox="0 0 152 16" fill="none" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M151 5C127.246 2.39797 102.069 1 76 1C49.9307 1 24.7542 2.39797 1 5V15C24.7542 12.398 49.9307 11 76 11C102.069 11 127.246 12.398 151 15V5Z" stroke="%238E8E8E"/%3E%3C/svg%3E%0A');
+    /* background-image: url('data:image/svg+xml,%3Csvg preserveAspectRatio="none" width="152" height="16" viewBox="0 0 152 16" fill="none" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M151 5C127.246 2.39797 102.069 1 76 1C49.9307 1 24.7542 2.39797 1 5V15C24.7542 12.398 49.9307 11 76 11C102.069 11 127.246 12.398 151 15V5Z" stroke="%238E8E8E"/%3E%3C/svg%3E%0A'); */
+    background-image: url("data:image/svg+xml,%3Csvg width='402' height='25' viewBox='0 0 402 25' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M401 7.57143C337.656 3.29667 270.518 1 201 1C131.482 1 64.3444 3.29667 1 7.57143V24C64.3444 19.7252 131.482 17.4286 201 17.4286C270.518 17.4286 337.656 19.7252 401 24V7.57143Z' stroke='%238E8E8E'/%3E%3C/svg%3E%0A");
     background-repeat: no-repeat;
     background-position: center;
 
+    font-weight: 200;
     color: #8E8E8E;
     display: inline-block;
     text-align: center
@@ -82,9 +84,10 @@
     width: var(--seat-size);
     height: var(--seat-size);
     border-radius: 20%;
-    box-shadow: 0 0 3px white;
+    /* box-shadow: 0 0 3px white; */
+    border: 1px solid #525252;
 
-    transition: background-color 0.3s ease-in-out;
+    transition: background-color 0.3s ease-in-out, scale 0.3s ease-in-out;
 }
 
 .hall__seat {
@@ -107,7 +110,9 @@
 
 .hall__seat_chosen,
 .hall__icon-seat_chosen {
-    background-color: #16A6AF
+    background-color: #16A6AF;
+    box-shadow: 0 0 3px #16A6AF;
+    scale: 1.2;
 }
 
 .hall__seat_disabled {
@@ -120,7 +125,8 @@
     display: grid;
     grid-template-columns: auto auto;
     justify-content: center;
-    gap: 10px
+    gap: 10px;
+    font-weight: 200;
 }
 
 .hall__legend-item {
@@ -130,12 +136,12 @@
 }
 
 .hall__icon-seat {
-    width: unset;
-    height: 100%;
-    aspect-ratio: 1;
+    width: var(--seat-size);
+    aspect-ratio: 1
 }
 
 .hall__legend-item-text {
+    font-size: 14px;
     color: white
 }
 
@@ -151,7 +157,7 @@
     color: white;
     border-radius: 3px;
     text-transform: uppercase;
-    padding: 12px;
+    padding: 12px 55px;
     border: none;
     cursor: pointer
 }

@@ -80,7 +80,7 @@
     display: none;
 }
 
-@media(max-width: 390px) {
+@media(max-width: 450px) {
     .header__top {
         justify-content: center;
     }
@@ -108,7 +108,7 @@
     margin: 0 15px;
 
     line-height: 1;
-    font-size: 1em;
+    font-size: 22px;
     color: white;
     text-transform: uppercase;
 }
@@ -172,7 +172,7 @@
 }
 
 .tab__content {
-    padding: 20px;
+    padding: 40px 35px;
     margin-left: var(--line-left);
 
     /*   ?????? */

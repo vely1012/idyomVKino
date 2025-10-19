@@ -12,7 +12,7 @@
 }
 
 .ticket__content {
-    padding: 25px 20px 35px;
+    padding: 25px 20px 30px;
     display: flex;
     flex-direction: column
 }
@@ -43,12 +43,10 @@
 }
 
 .ticket__additional {
-    color: gray;
-    margin: 0
-}
-
-.ticket__additional {
-    color: black
+    margin: 0;
+    
+    color: black;
+    font-weight: 300
 }
 
 .ticket__additional:nth-of-type(2) {

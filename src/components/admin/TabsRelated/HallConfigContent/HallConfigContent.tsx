@@ -174,21 +174,22 @@ export default function HallConfigContent() {
                     step="1" placeholder="10" value={selectedHallWidth} onChange={changeHallWidth}/>
             </div>
             <span className="hall-config__control-text">Теперь вы можете указать типы кресел на схеме</span>
-            <div className="hall-config__seats-manager">
-                <div className="hall-config__seats-legend">
-                    <div className="hall-config__legend-item">
-                        <div className="hall-config__seat hall-config__seat_disabled"></div>
-                        <span className="hall-config__legend-hint">обычные кресла</span>
-                    </div>
-                    <div className="hall-config__legend-item">
-                        <div className="hall-config__seat hall-config__seat_standart"></div>
-                        <span className="hall-config__legend-hint">VIP кресла</span>
-                    </div>
-                    <div className="hall-config__legend-item">
-                        <div className="hall-config__seat hall-config__seat_vip"></div>
-                        <span className="hall-config__legend-hint">заблокированные (нет кресла)</span>
-                    </div>
+            <div className="hall-config__seats-legend">
+                <div className="hall-config__legend-item">
+                    <div className="hall-config__seat hall-config__seat_standart"></div>
+                    <span className="hall-config__legend-hint">обычные кресла</span>
                 </div>
+                <div className="hall-config__legend-item">
+                    <div className="hall-config__seat hall-config__seat_vip"></div>
+                    <span className="hall-config__legend-hint">VIP кресла</span>
+                </div>
+                <div className="hall-config__legend-item">
+                    <div className="hall-config__seat hall-config__seat_disabled"></div>
+                    <span className="hall-config__legend-hint">заблокированные (нет кресла)</span>
+                </div>
+            </div>
+            <span className="hall-config__mouse-hint">Чтобы изменить вид кресла, нажмите по нему левой кнопкой мыши</span>
+            <div className="hall-config__seats-manager">
                 <div className="hall-config__seats-area" style={{'--columns': selectedHallWidth } as React.CSSProperties} key={`${selectedHallWidth}-${selectedHallHeight}`}>
                     <span className="hall-config__screen"> экран</span>
                     {

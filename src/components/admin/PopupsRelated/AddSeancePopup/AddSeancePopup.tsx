@@ -8,36 +8,37 @@ import type { appState } from "../../../../ts/stateManagement/reducers"
 import type { Dispatch } from "redux"
 
 export default function AddSeancePopup() {
-    const adminData = useSelector((state: appState) => state.admin)
-    const dispatch = useDispatch<Dispatch<AdminAction>>()
+    const adminData = useSelector((state: appState) => state.admin);
+    const dispatch = useDispatch<Dispatch<AdminAction>>();
 
-    const hallOptions: HallNode[] = adminData.halls
-    const filmOptions: FilmNode[] = adminData.films
+    const hallOptions: HallNode[] = adminData.halls;
+    const filmOptions: FilmNode[] = adminData.films;
 
     const submitAdding = async function (e: FormEvent) {
-        e.preventDefault()
+        e.preventDefault();
 
-        const selectedFilmName = (document.getElementById('filmName_cmbx') as HTMLInputElement).value
-        const selectedHallName = (document.getElementById('hallName_cmbx') as HTMLInputElement).value
+        const selectedFilmName = (document.getElementById('filmName_cmbx') as HTMLInputElement).value;
+        const selectedHallName = (document.getElementById('hallName_cmbx') as HTMLInputElement).value;
 
-        const filmId = adminData.films.filter((f: FilmNode) => f.film_name === selectedFilmName)[0].id
-        const hallId = adminData.halls.filter((h: HallNode) => h.hall_name === selectedHallName)[0].id
-        const timeValues = (document.getElementById('timeInput1')?.dataset.time as string).split(':')
-        const seanceTime = new Date()
-        seanceTime.setHours(Number(timeValues[0]), Number(timeValues[1]), 0, 0)
+        const filmId = adminData.films.filter((f: FilmNode) => f.film_name === selectedFilmName)[0].id;
+        const hallId = adminData.halls.filter((h: HallNode) => h.hall_name === selectedHallName)[0].id;
+        // const timeValues = (document.getElementById('timeInput1')?.dataset.time as string).split(':');
+        const timeValues = [(document.getElementById('hoursInput') as HTMLInputElement).value, (document.getElementById('minutesInput') as HTMLInputElement).value];
+        const seanceTime = new Date();
+        seanceTime.setHours(Number(timeValues[0]), Number(timeValues[1]), 0, 0);
         
-        const response = await ivkAPI.addSeance(hallId, filmId, seanceTime)
+        const response = await ivkAPI.addSeance(hallId, filmId, seanceTime);
 
         if(response.success) {
-            dispatch(SetSeances((response.result as { seances: SeanceNode[] }).seances))
-            closePopup()
+            dispatch(SetSeances((response.result as { seances: SeanceNode[] }).seances));
+            closePopup();
         } else {
-            alert(response.error)
+            alert(response.error);
         }
     }
 
     const closePopup = function () {
-        document.getElementById('addSeancePopup')?.classList.add('hidden')
+        document.getElementById('addSeancePopup')?.classList.add('hidden');
     }
 
     return (

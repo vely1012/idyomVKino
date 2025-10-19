@@ -89,7 +89,7 @@ export default function Film({ filmName, posterSrc, description, duration, origi
                 <div className="film__text-wrapper">
                     <h2 className="film__title">{filmName}</h2>
                     <p className="film__description">{description}</p>
-                    <span className="film__additional-info">{duration} min, {origin}</span>
+                    <span className="film__additional-info">{duration} минут {origin}</span>
                 </div>
             </div>
             <div className="film__booking-options">

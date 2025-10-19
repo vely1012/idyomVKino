@@ -42,7 +42,7 @@ export default function StartSellingContent() {
     
     return (
         <div className="start-selling">
-            <span className="start-selling__control-text">Выберете зал для конфигурации</span>
+            <span className="start-selling__control-text">Выбирите залл для открытия/закрытия продаж</span>
             <HallSelector halls={halls} selectionCallback={selectAnotherHall} selectedHallId={halls[selectedHallIndex].id}/>
             <span className="start-selling__hall-status">Всё готово к открытию</span>
             <button type="button" className={btnClasses} onClick={btnClick}></button>

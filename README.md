@@ -2,7 +2,7 @@
 
 ## Description ✏️
 
-**Final educational project for the netologia's fronted developer course**
+**Final educational project for the netologia's frontend developer course**
 
 **You can access the project here:** [idyomVKino](https://vely1012.github.io/idyomVKino/)
 

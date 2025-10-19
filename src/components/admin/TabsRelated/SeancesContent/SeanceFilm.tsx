@@ -21,21 +21,25 @@ export default function SeanceFilm({ film, dataColor, deleteCallback }: FilmElem
     const startDragging = function(e: MouseEvent) {
         e.preventDefault()
         
-        const clickedFilm = (e.target as HTMLElement).closest('.seances__film') as HTMLElement
-        const draggableFilm = document.getElementById('draggable-film') as HTMLElement
+        const clickedFilm = (e.target as HTMLElement).closest('.seances__film') as HTMLElement;
+        const draggableFilm = document.getElementById('draggable-film') as HTMLElement;
 
-        draggableFilm.classList.remove('hidden')
-        draggableFilm.innerHTML = clickedFilm.outerHTML
+        draggableFilm.classList.remove('hidden');
+        // draggableFilm.innerHTML = clickedFilm.outerHTML;
+        // (draggableFilm as HTMLImageElement).src = clickedFilm.querySelector('img')?.src || "";
+        draggableFilm.style.setProperty('background-image', `url(${clickedFilm.querySelector('img')?.src})`);
         
-        const meRect = draggableFilm.getBoundingClientRect()
-        const meWidth = meRect.right - meRect.left
-        const meHeight = meRect.bottom - meRect.top
+        const meRect = draggableFilm.getBoundingClientRect();
+        const meWidth = meRect.right - meRect.left;
+        const meHeight = meRect.bottom - meRect.top;
         
-        const { x: seancesX, y: seancesY } = (document.getElementById('seances-tab') as HTMLElement).getBoundingClientRect()
+        const { x: seancesX, y: seancesY } = (document.getElementById('seances-tab') as HTMLElement).getBoundingClientRect();
         
         
-        draggableFilm.style.setProperty('--x', `${e.clientX - seancesX - meWidth / 2}px`)
-        draggableFilm.style.setProperty('--y', `${e.clientY - seancesY - meHeight / 2}px`)
+        draggableFilm.style.setProperty('--x', `${e.clientX - seancesX - meWidth / 2}px`);
+        draggableFilm.style.setProperty('--y', `${e.clientY - seancesY - meHeight / 2}px`);
+
+        draggableFilm.dataset.filmName = clickedFilm.children[1].textContent as string;
     }
 
     return (

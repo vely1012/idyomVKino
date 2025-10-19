@@ -190,7 +190,8 @@ body:before {
 }
 
 .film__additional-info {
-    color: gray
+    /* color: gray; */
+    font-weight: 300;
 }
 
 .film__booking {

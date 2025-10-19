@@ -3,9 +3,16 @@
     flex-direction: column;
 }
 
+.halls-tab__heading {
+    margin: 0;
+}
+
 .halls-tab__list {
     list-style-type: none;
     padding-left: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 }
 
 .halls-tab__item {
@@ -28,7 +35,7 @@
 .halls-tab__item-name {
     margin-right: 10px;
 
-    font-weight: 600;
+    /* font-weight: 600; */
     line-height: 1;
 }
 
@@ -55,7 +62,7 @@
     color: white;
     border-radius: 3px;
     text-transform: uppercase;
-    padding: 12px;
+    padding: 12px 30px;
 
     border: none;
     cursor: pointer;
